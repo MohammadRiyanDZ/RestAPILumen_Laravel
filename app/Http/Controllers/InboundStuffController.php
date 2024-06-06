@@ -157,14 +157,14 @@ class InboundStuffController extends Controller
                 'stuff_id' => 'required',
                 'total' => 'required',
                 'date' => 'required',
-                'proff_file' => 'required',
+                'proff_file' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
             ]);
 
             $checkProses = InboundStuff::where('id', $id)->update([
                 'stuff_id' => $request->stuff_id,
                 'total' => $request->total,
                 'date' => $request->date,
-                'proff_file' => $request->proff_file,
+                'proff_file' => $proffName,
             ]);
 
             if($checkProses) {

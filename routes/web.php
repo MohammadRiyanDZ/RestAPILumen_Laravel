@@ -24,17 +24,17 @@ $router->get('/profile', 'AuthController@me');
 //stuff
 $router->get('/stuffs', 'StuffController@index');
 
-$router->group(['prefix' => 'stuff', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'stuff'], function() use ($router){
     // static routes
     $router->get('/data', 'StuffController@index');
-    $router->post('/', 'StuffController@store');
+    $router->post('/store', 'StuffController@store');
     $router->get('/trash', 'StuffController@trash');
     
 
     // dynamic routes
-    $router->get('{id}', 'StuffController@show');
-    $router->patch('/{id}', 'StuffController@update');
-    $router->delete('/{id}', 'StuffController@destroy');
+    $router->get('/detail/{id}', 'StuffController@show');
+    $router->patch('/update/{id}', 'StuffController@update');
+    $router->delete('/delete/{id}', 'StuffController@destroy');
     $router->get('/restore/{id}', 'StuffController@restore');
     $router->delete('/permanent/{id}', 'StuffController@deletePermanent');
 });
@@ -42,34 +42,34 @@ $router->group(['prefix' => 'stuff', 'middleware' => 'auth'], function() use ($r
 $router->group(['prefix' => 'user'], function() use ($router){
     // static routes
     $router->get('/data', 'UserController@index');
-    $router->post('/', 'UserController@store');
+    $router->post('/store', 'UserController@store');
     $router->get('/trash', 'UserController@trash');
     
 
     // dynamic routes
-    $router->get('{id}', 'UserController@show');
-    $router->patch('/{id}', 'UserController@update');
-    $router->delete('/{id}', 'UserController@destroy');
+    $router->get('/detail/{id}', 'UserController@show');
+    $router->patch('/update/{id}', 'UserController@update');
+    $router->delete('/delete/{id}', 'UserController@destroy');
     $router->get('/restore/{id}', 'UserController@restore');
     $router->delete('/permanent/{id}', 'UserController@deletePermanent');
 });
 
-$router->group(['prefix' => 'stuff-stock', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'stuff-stock'], function() use ($router){
     // static routes
     $router->get('/data', 'StuffStockController@index');
-    $router->post('/', 'StuffStockController@store');
+    $router->post('/store', 'StuffStockController@store');
     $router->get('/trash', 'StuffStockController@trash');
     $router->post('add-stock/{id}', 'StuffStockController@addStock');
 
     // dynamic routes
-    $router->get('detail/{id}', 'StuffStockController@show');
-    $router->patch('update/{id}', 'StuffStockController@update');
-    $router->delete('delete/{id}', 'StuffStockController@destroy');
+    $router->get('/detail/{id}', 'StuffStockController@show');
+    $router->patch('/update/{id}', 'StuffStockController@update');
+    $router->delete('/delete/{id}', 'StuffStockController@destroy');
     $router->get('/restore/{id}', 'StuffStockController@restore');
     $router->delete('/permanent/{id}', 'StuffStockController@deletePermanent');
 });
 
-$router->group(['prefix' => 'restoration', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'restoration'], function() use ($router){
     // static routes
     $router->get('/data', 'RestorationController@index');
     $router->post('/store', 'RestorationController@store');
@@ -77,14 +77,14 @@ $router->group(['prefix' => 'restoration', 'middleware' => 'auth'], function() u
     
 
     // dynamic routes
-    $router->get('{id}', 'RestorationController@show');
-    $router->patch('/{id}', 'RestorationController@update');
-    $router->delete('/{id}', 'RestorationController@destroy');
+    $router->get('/detail/{id}', 'RestorationController@show');
+    $router->patch('/update/{id}', 'RestorationController@update');
+    $router->delete('/delete/{id}', 'RestorationController@destroy');
     $router->get('/restore/{id}', 'RestorationController@restore');
     $router->delete('/permanent/{id}', 'RestorationController@deletePermanent');
 });
 
-$router->group(['prefix' => 'lending', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'lending'], function() use ($router){
     // static routes
     $router->get('/data', 'LendingController@index');
     $router->post('/store', 'LendingController@store');
@@ -92,14 +92,14 @@ $router->group(['prefix' => 'lending', 'middleware' => 'auth'], function() use (
     
 
     // dynamic routes
-    $router->get('detail/{id}', 'LendingController@show');
-    $router->patch('update/{id}', 'LendingController@update');
-    $router->delete('delete/{id}', 'LendingController@destroy');
+    $router->get('/detail/{id}', 'LendingController@show');
+    $router->patch('/update/{id}', 'LendingController@update');
+    $router->delete('/delete/{id}', 'LendingController@destroy');
     $router->get('/restore/{id}', 'LendingController@restore');
     $router->delete('/permanent/{id}', 'LendingController@deletePermanent');
 });
 
-$router->group(['prefix' => 'inbound-stuff', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'inbound-stuff'], function() use ($router){
     // static routes
     $router->get('/data', 'InboundStuffController@index');
     $router->post('/store', 'InboundStuffController@store');
@@ -107,8 +107,8 @@ $router->group(['prefix' => 'inbound-stuff', 'middleware' => 'auth'], function()
     
 
     // dynamic routes
-    $router->get('detail/{id}', 'InboundStuffController@show');
-    $router->patch('update/{id}', 'InboundStuffController@update');
+    $router->get('/detail/{id}', 'InboundStuffController@show');
+    $router->patch('/update/{id}', 'InboundStuffController@update');
     $router->delete('delete/{id}', 'InboundStuffController@destroy');
     $router->get('/restore/{id}', 'InboundStuffController@restore');
     $router->delete('/permanent/{id}', 'InboundStuffController@deletePermanent');

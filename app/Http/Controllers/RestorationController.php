@@ -80,7 +80,7 @@ class RestorationController extends Controller
                 ]); // update jumlah barang yang tersedia yang ditambahkan dengan jumlah barang bagus yang dikembalikan dan update jumlah barang yang rusak ditambah dengan jumlah barang rusak yang dikembalikan 
 
                 if ($createRestoration && $updateStock) {
-                    return ApiFormatter::sendResponse(200, 'Successfully Creat A Restoration Data', $createRestoration);
+                    return ApiFormatter::sendResponse(200, 'Successfully Create A Restoration Data', $createRestoration);
                 }
             } 
         } catch (\Exception $e) {
